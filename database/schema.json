@@ -1,0 +1,4763 @@
+{
+  "tables": {
+    "foods": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "owner_user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "scope",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "brand",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "energy_kcal_100g",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "protein_g_100g",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "fat_g_100g",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "carbs_g_100g",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "source_name",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "is_archived",
+        "type": "boolean",
+        "default": "false",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "users": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "email",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "email_normalized",
+        "type": "character varying",
+        "default": null,
+        "nullable": true,
+        "generated": "ALWAYS"
+      },
+      {
+        "name": "password_hash",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "display_name",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "default": "'ACTIVE'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "equipment": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "category",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "is_active",
+        "type": "boolean",
+        "default": "true",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "exercises": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "owner_user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name_ru",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name_en",
+        "type": "character varying",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "instructions",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "safety_notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_type",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "measurement_type",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "load_basis",
+        "type": "character varying",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "visibility",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "is_archived",
+        "type": "boolean",
+        "default": "false",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "difficulty_level",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "meal_items": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "meal_entry_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "food_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name_snapshot",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "quantity_g",
+        "type": "numeric",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "energy_kcal_100g_snapshot",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "protein_g_100g_snapshot",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "fat_g_100g_snapshot",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "carbs_g_100g_snapshot",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "source_snapshot",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "user_goals": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "training_goal_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "metric_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "priority",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_value",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_unit",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_date",
+        "type": "date",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "export_jobs": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "scope",
+        "type": "jsonb",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "storage_key",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "expires_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "error_code",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "media_files": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "owner_user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "scope",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "storage_key",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "mime_type",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "size_bytes",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "checksum",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "ai_decisions": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "recommendation_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "decision",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "reason_code",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "reason_text",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "decided_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "meal_entries": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "eaten_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "local_date",
+        "type": "date",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "timezone",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "meal_type",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "program_runs": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "timezone",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "session_sets": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "integer",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "set_category",
+        "type": "character varying",
+        "default": "'WORKING'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "effort_mode",
+        "type": "character varying",
+        "default": "'NORMAL'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_weight_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_assistance_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_min",
+        "type": "integer",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_max",
+        "type": "integer",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_duration_seconds",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_distance_meters",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_rpe",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_rir",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_weight_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_assistance_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_reps",
+        "type": "integer",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_duration_seconds",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_distance_meters",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_rpe",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_rir",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rest_after_seconds",
+        "type": "integer",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "default": "'PENDING'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "set_method",
+        "type": "text",
+        "default": "'STRAIGHT'::text",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "round_number",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "muscle_groups": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "parent_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "sort_order",
+        "type": "integer",
+        "default": "0",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "program_goals": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "training_goal_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "priority",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "program_weeks": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_block_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "week_number",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "volume_modifier",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "intensity_modifier",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "session_media": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "media_file_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "caption",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "sort_order",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "template_sets": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "template_exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "integer",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "set_category",
+        "type": "character varying",
+        "default": "'WORKING'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "effort_mode",
+        "type": "character varying",
+        "default": "'NORMAL'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_weight_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_assistance_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_min",
+        "type": "integer",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_max",
+        "type": "integer",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_duration_seconds",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_distance_meters",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_rpe",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_rir",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rest_after_seconds",
+        "type": "integer",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "set_method",
+        "type": "text",
+        "default": "'STRAIGHT'::text",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "user_consents": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "purpose",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "policy_version",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "granted_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "revoked_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "provider_scope",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "water_entries": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "drunk_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "local_date",
+        "type": "date",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "timezone",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "volume_ml",
+        "type": "numeric",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "exercise_media": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "media_file_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "media_type",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "sort_order",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "program_blocks": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "block_type",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "rest_intervals": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_set_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "ends_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "ended_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "session_pauses": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "ended_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "training_goals": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "code",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "is_active",
+        "type": "boolean",
+        "default": "true",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "user_equipment": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "equipment_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "muscle_soreness": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "checkin_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "muscle_group_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "score",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "sync_operations": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "client_operation_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "device_id",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "request_hash",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "operation_type",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "result_reference",
+        "type": "jsonb",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "expires_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "exercise_aliases": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "alias",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "locale",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "exercise_muscles": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "muscle_group_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "role",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "personal_records": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "metric_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_set_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_segment_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "value",
+        "type": "numeric",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "unit",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "formula_version",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "computed_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "planned_workouts": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_week_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "template_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "day_of_week",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "schedule_changes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "scheduled_workout_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "from_date",
+        "type": "date",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "to_date",
+        "type": "date",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "changed_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "changed_by",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "workout_sessions": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "template_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "client_operation_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name_snapshot",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "default": "'IN_PROGRESS'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "timezone",
+        "type": "character varying",
+        "default": "'Europe/Moscow'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "revision",
+        "type": "bigint",
+        "default": "1",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "scheduled_workout_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "body_measurements": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "metric_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "value",
+        "type": "numeric",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "unit",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "measured_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "timezone",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "food_recognitions": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "media_file_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "consent_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "provider",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "model_version",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "error_code",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "meal_entry_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "hydration_targets": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "valid_from",
+        "type": "date",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "valid_to",
+        "type": "date",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "volume_ml",
+        "type": "numeric",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "nutrition_targets": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "valid_from",
+        "type": "date",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "valid_to",
+        "type": "date",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "energy_kcal",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "protein_g",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "fat_g",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "carbs_g",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "source",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "recovery_checkins": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "recorded_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "timezone",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "sleep_hours",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "sleep_quality",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "energy",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "fatigue",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "stress",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "session_exercises": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "original_exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name_snapshot",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "measurement_type_snapshot",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "load_basis_snapshot",
+        "type": "character varying",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "integer",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "planned_exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "template_exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_group_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "group_position",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "session_revisions": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "revision_number",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "changed_by",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "change_summary",
+        "type": "jsonb",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "changed_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "training_programs": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "owner_user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "difficulty_level",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "is_archived",
+        "type": "boolean",
+        "default": "false",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "workout_templates": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "owner_user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "is_archived",
+        "type": "boolean",
+        "default": "false",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "ai_recommendations": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "analysis_request_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "scheduled_workout_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "planned_set_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "kind",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "proposal",
+        "type": "jsonb",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "explanation",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "confidence",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "expected_target_revision",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "expires_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "exercise_equipment": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "equipment_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "metric_definitions": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "code",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "dimension",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "canonical_unit",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "direction",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "formula_version",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "is_active",
+        "type": "boolean",
+        "default": "true",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "scheduled_workouts": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_run_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "planned_workout_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "scheduled_date",
+        "type": "date",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "sequence_number",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "revision",
+        "type": "bigint",
+        "default": "1",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "template_exercises": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "template_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "integer",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "default_rest_seconds",
+        "type": "integer",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_group_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "group_position",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "user_training_days": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "day_of_week",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "available_minutes",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "analytics_snapshots": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "metric_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "period_start",
+        "type": "date",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "period_end",
+        "type": "date",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "timezone",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "formula_version",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "filter_signature",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "value",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "computed_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "source_revision",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "workout_adjustments": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "scheduled_workout_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "planned_set_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "recommendation_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "revision",
+        "type": "bigint",
+        "default": "1",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_weight_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_assistance_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_min",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_max",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_duration_seconds",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_distance_meters",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "ai_analysis_requests": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "consent_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_run_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "provider",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "model_version",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "prompt_version",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "context_revision",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "context_summary",
+        "type": "jsonb",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "error_code",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "movement_discomforts": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "checkin_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "body_area",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "severity",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "planned_set_segments": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "planned_set_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_weight_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_assistance_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_min",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_max",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_duration_seconds",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rest_after_seconds",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "planned_workout_sets": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "planned_exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "set_category",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "set_method",
+        "type": "text",
+        "default": "'STRAIGHT'::text",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "effort_mode",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_weight_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_assistance_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_min",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_max",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_duration_seconds",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_distance_meters",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_rpe",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_rir",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rest_after_seconds",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "progression_policies": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "planned_exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "strategy",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "weight_increment_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_min",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_max",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "minimum_success_sessions",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "maximum_increment_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "session_set_segments": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_set_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_weight_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_assistance_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_min",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_max",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_duration_seconds",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rest_after_seconds",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_weight_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_assistance_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_reps",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_duration_seconds",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_distance_meters",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_rpe",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "actual_rir",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "exercise_alternatives": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "alternative_exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "priority",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "template_set_segments": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "template_set_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_weight_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_assistance_kg",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_min",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_reps_max",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "target_duration_seconds",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rest_after_seconds",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "food_recognition_items": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "recognition_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "food_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "proposed_name",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "proposed_quantity_g",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "confidence",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "review_status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "confirmed_quantity_g",
+        "type": "numeric",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "user_training_profiles": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "experience_level",
+        "type": "character varying",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "preferred_weight_unit",
+        "type": "character varying",
+        "default": "'KG'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "preferred_distance_unit",
+        "type": "character varying",
+        "default": "'KM'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "timezone",
+        "type": "character varying",
+        "default": "'Europe/Moscow'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "default_rest_seconds",
+        "type": "integer",
+        "default": "90",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "training_days_per_week",
+        "type": "smallint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "onboarding_completed",
+        "type": "boolean",
+        "default": "false",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "planned_exercise_groups": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "planned_workout_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "group_type",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rounds",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rest_between_rounds",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "session_exercise_groups": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "session_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "group_type",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rounds",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rest_between_rounds",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "template_exercise_groups": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "template_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "group_type",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rounds",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "rest_between_rounds",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "planned_workout_exercises": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "planned_workout_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "exercise_group_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "group_position",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "default_rest_seconds",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "training_program_versions": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "version_number",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "based_on_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "duration_weeks",
+        "type": "bigint",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "schedule_mode",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "published_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ],
+    "workout_template_versions": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "template_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "based_on_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "version_number",
+        "type": "integer",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "default": "'DRAFT'::character varying",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "change_summary",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "CURRENT_TIMESTAMP",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "published_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "expected_duration_minutes",
+        "type": "bigint",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      }
+    ],
+    "recommendation_applications": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "recommendation_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "decision_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "template_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "program_version_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "adjustment_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      },
+      {
+        "name": "applied_at",
+        "type": "timestamp with time zone",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "error_code",
+        "type": "text",
+        "default": null,
+        "nullable": true,
+        "generated": "NEVER"
+      },
+      {
+        "name": "client_operation_id",
+        "type": "uuid",
+        "default": null,
+        "nullable": false,
+        "generated": "NEVER"
+      }
+    ]
+  },
+  "version": 9,
+  "foreign_keys": [
+    {
+      "table": "user_training_profiles",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "muscle_groups",
+      "parent": "muscle_groups",
+      "definition": "FOREIGN KEY (parent_id) REFERENCES muscle_groups(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercises",
+      "parent": "users",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercise_muscles",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercise_muscles",
+      "parent": "muscle_groups",
+      "definition": "FOREIGN KEY (muscle_group_id) REFERENCES muscle_groups(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercise_equipment",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercise_equipment",
+      "parent": "equipment",
+      "definition": "FOREIGN KEY (equipment_id) REFERENCES equipment(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "workout_templates",
+      "parent": "users",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "workout_template_versions",
+      "parent": "workout_templates",
+      "definition": "FOREIGN KEY (template_id) REFERENCES workout_templates(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "workout_template_versions",
+      "parent": "workout_template_versions",
+      "definition": "FOREIGN KEY (based_on_version_id, template_id) REFERENCES workout_template_versions(id, template_id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "template_exercises",
+      "parent": "workout_template_versions",
+      "definition": "FOREIGN KEY (template_version_id) REFERENCES workout_template_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "template_exercises",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "template_sets",
+      "parent": "template_exercises",
+      "definition": "FOREIGN KEY (template_exercise_id) REFERENCES template_exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "workout_sessions",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "workout_sessions",
+      "parent": "workout_template_versions",
+      "definition": "FOREIGN KEY (template_version_id) REFERENCES workout_template_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_exercises",
+      "parent": "workout_sessions",
+      "definition": "FOREIGN KEY (session_id) REFERENCES workout_sessions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_exercises",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_exercises",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (original_exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_sets",
+      "parent": "session_exercises",
+      "definition": "FOREIGN KEY (session_exercise_id) REFERENCES session_exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "user_training_days",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "user_goals",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "user_goals",
+      "parent": "training_goals",
+      "definition": "FOREIGN KEY (training_goal_id) REFERENCES training_goals(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "user_goals",
+      "parent": "metric_definitions",
+      "definition": "FOREIGN KEY (metric_id) REFERENCES metric_definitions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "user_goals",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "user_equipment",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "user_equipment",
+      "parent": "equipment",
+      "definition": "FOREIGN KEY (equipment_id) REFERENCES equipment(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercise_aliases",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercise_alternatives",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercise_alternatives",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (alternative_exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "media_files",
+      "parent": "users",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercise_media",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "exercise_media",
+      "parent": "media_files",
+      "definition": "FOREIGN KEY (media_file_id) REFERENCES media_files(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "template_exercise_groups",
+      "parent": "workout_template_versions",
+      "definition": "FOREIGN KEY (template_version_id) REFERENCES workout_template_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "template_exercises",
+      "parent": "template_exercise_groups",
+      "definition": "FOREIGN KEY (exercise_group_id) REFERENCES template_exercise_groups(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "template_set_segments",
+      "parent": "template_sets",
+      "definition": "FOREIGN KEY (template_set_id) REFERENCES template_sets(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "training_programs",
+      "parent": "users",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "training_program_versions",
+      "parent": "training_programs",
+      "definition": "FOREIGN KEY (program_id) REFERENCES training_programs(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "training_program_versions",
+      "parent": "training_program_versions",
+      "definition": "FOREIGN KEY (based_on_version_id) REFERENCES training_program_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "planned_workout_sets",
+      "parent": "planned_workout_exercises",
+      "definition": "FOREIGN KEY (planned_exercise_id) REFERENCES planned_workout_exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "program_goals",
+      "parent": "training_program_versions",
+      "definition": "FOREIGN KEY (program_version_id) REFERENCES training_program_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "program_goals",
+      "parent": "training_goals",
+      "definition": "FOREIGN KEY (training_goal_id) REFERENCES training_goals(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "program_blocks",
+      "parent": "training_program_versions",
+      "definition": "FOREIGN KEY (program_version_id) REFERENCES training_program_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "program_weeks",
+      "parent": "program_blocks",
+      "definition": "FOREIGN KEY (program_block_id) REFERENCES program_blocks(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "planned_workouts",
+      "parent": "program_weeks",
+      "definition": "FOREIGN KEY (program_week_id) REFERENCES program_weeks(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "planned_workouts",
+      "parent": "workout_template_versions",
+      "definition": "FOREIGN KEY (template_version_id) REFERENCES workout_template_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "planned_exercise_groups",
+      "parent": "planned_workouts",
+      "definition": "FOREIGN KEY (planned_workout_id) REFERENCES planned_workouts(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "planned_workout_exercises",
+      "parent": "planned_workouts",
+      "definition": "FOREIGN KEY (planned_workout_id) REFERENCES planned_workouts(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "planned_workout_exercises",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "planned_workout_exercises",
+      "parent": "planned_exercise_groups",
+      "definition": "FOREIGN KEY (exercise_group_id) REFERENCES planned_exercise_groups(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "planned_set_segments",
+      "parent": "planned_workout_sets",
+      "definition": "FOREIGN KEY (planned_set_id) REFERENCES planned_workout_sets(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "program_runs",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "program_runs",
+      "parent": "training_program_versions",
+      "definition": "FOREIGN KEY (program_version_id) REFERENCES training_program_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "scheduled_workouts",
+      "parent": "program_runs",
+      "definition": "FOREIGN KEY (program_run_id) REFERENCES program_runs(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "scheduled_workouts",
+      "parent": "planned_workouts",
+      "definition": "FOREIGN KEY (planned_workout_id) REFERENCES planned_workouts(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "schedule_changes",
+      "parent": "scheduled_workouts",
+      "definition": "FOREIGN KEY (scheduled_workout_id) REFERENCES scheduled_workouts(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "schedule_changes",
+      "parent": "users",
+      "definition": "FOREIGN KEY (changed_by) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "progression_policies",
+      "parent": "training_program_versions",
+      "definition": "FOREIGN KEY (program_version_id) REFERENCES training_program_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "progression_policies",
+      "parent": "planned_workout_exercises",
+      "definition": "FOREIGN KEY (planned_exercise_id) REFERENCES planned_workout_exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "workout_adjustments",
+      "parent": "scheduled_workouts",
+      "definition": "FOREIGN KEY (scheduled_workout_id) REFERENCES scheduled_workouts(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "workout_adjustments",
+      "parent": "planned_workout_sets",
+      "definition": "FOREIGN KEY (planned_set_id) REFERENCES planned_workout_sets(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "workout_adjustments",
+      "parent": "ai_recommendations",
+      "definition": "FOREIGN KEY (recommendation_id) REFERENCES ai_recommendations(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "workout_sessions",
+      "parent": "scheduled_workouts",
+      "definition": "FOREIGN KEY (scheduled_workout_id) REFERENCES scheduled_workouts(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_exercise_groups",
+      "parent": "workout_sessions",
+      "definition": "FOREIGN KEY (session_id) REFERENCES workout_sessions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_exercises",
+      "parent": "planned_workout_exercises",
+      "definition": "FOREIGN KEY (planned_exercise_id) REFERENCES planned_workout_exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_exercises",
+      "parent": "template_exercises",
+      "definition": "FOREIGN KEY (template_exercise_id) REFERENCES template_exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_exercises",
+      "parent": "session_exercise_groups",
+      "definition": "FOREIGN KEY (exercise_group_id) REFERENCES session_exercise_groups(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_set_segments",
+      "parent": "session_sets",
+      "definition": "FOREIGN KEY (session_set_id) REFERENCES session_sets(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "analytics_snapshots",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_pauses",
+      "parent": "workout_sessions",
+      "definition": "FOREIGN KEY (session_id) REFERENCES workout_sessions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "rest_intervals",
+      "parent": "workout_sessions",
+      "definition": "FOREIGN KEY (session_id) REFERENCES workout_sessions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "rest_intervals",
+      "parent": "session_sets",
+      "definition": "FOREIGN KEY (session_set_id) REFERENCES session_sets(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_media",
+      "parent": "workout_sessions",
+      "definition": "FOREIGN KEY (session_id) REFERENCES workout_sessions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_media",
+      "parent": "media_files",
+      "definition": "FOREIGN KEY (media_file_id) REFERENCES media_files(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_revisions",
+      "parent": "workout_sessions",
+      "definition": "FOREIGN KEY (session_id) REFERENCES workout_sessions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "session_revisions",
+      "parent": "users",
+      "definition": "FOREIGN KEY (changed_by) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "body_measurements",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "body_measurements",
+      "parent": "metric_definitions",
+      "definition": "FOREIGN KEY (metric_id) REFERENCES metric_definitions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "analytics_snapshots",
+      "parent": "metric_definitions",
+      "definition": "FOREIGN KEY (metric_id) REFERENCES metric_definitions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "recovery_checkins",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "recovery_checkins",
+      "parent": "workout_sessions",
+      "definition": "FOREIGN KEY (session_id) REFERENCES workout_sessions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "muscle_soreness",
+      "parent": "recovery_checkins",
+      "definition": "FOREIGN KEY (checkin_id) REFERENCES recovery_checkins(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "muscle_soreness",
+      "parent": "muscle_groups",
+      "definition": "FOREIGN KEY (muscle_group_id) REFERENCES muscle_groups(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "movement_discomforts",
+      "parent": "recovery_checkins",
+      "definition": "FOREIGN KEY (checkin_id) REFERENCES recovery_checkins(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "movement_discomforts",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "personal_records",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "personal_records",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "personal_records",
+      "parent": "metric_definitions",
+      "definition": "FOREIGN KEY (metric_id) REFERENCES metric_definitions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "personal_records",
+      "parent": "session_sets",
+      "definition": "FOREIGN KEY (session_set_id) REFERENCES session_sets(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "personal_records",
+      "parent": "session_set_segments",
+      "definition": "FOREIGN KEY (session_segment_id) REFERENCES session_set_segments(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "analytics_snapshots",
+      "parent": "exercises",
+      "definition": "FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "foods",
+      "parent": "users",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "meal_entries",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "meal_items",
+      "parent": "meal_entries",
+      "definition": "FOREIGN KEY (meal_entry_id) REFERENCES meal_entries(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "meal_items",
+      "parent": "foods",
+      "definition": "FOREIGN KEY (food_id) REFERENCES foods(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "food_recognitions",
+      "parent": "user_consents",
+      "definition": "FOREIGN KEY (consent_id) REFERENCES user_consents(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "water_entries",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "nutrition_targets",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "hydration_targets",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "food_recognitions",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "food_recognitions",
+      "parent": "media_files",
+      "definition": "FOREIGN KEY (media_file_id) REFERENCES media_files(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "food_recognitions",
+      "parent": "meal_entries",
+      "definition": "FOREIGN KEY (meal_entry_id) REFERENCES meal_entries(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "food_recognition_items",
+      "parent": "food_recognitions",
+      "definition": "FOREIGN KEY (recognition_id) REFERENCES food_recognitions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "food_recognition_items",
+      "parent": "foods",
+      "definition": "FOREIGN KEY (food_id) REFERENCES foods(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "user_consents",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "ai_analysis_requests",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "ai_analysis_requests",
+      "parent": "user_consents",
+      "definition": "FOREIGN KEY (consent_id) REFERENCES user_consents(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "ai_analysis_requests",
+      "parent": "program_runs",
+      "definition": "FOREIGN KEY (program_run_id) REFERENCES program_runs(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "ai_recommendations",
+      "parent": "ai_analysis_requests",
+      "definition": "FOREIGN KEY (analysis_request_id) REFERENCES ai_analysis_requests(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "ai_recommendations",
+      "parent": "scheduled_workouts",
+      "definition": "FOREIGN KEY (scheduled_workout_id) REFERENCES scheduled_workouts(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "ai_recommendations",
+      "parent": "planned_workout_sets",
+      "definition": "FOREIGN KEY (planned_set_id) REFERENCES planned_workout_sets(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "ai_decisions",
+      "parent": "ai_recommendations",
+      "definition": "FOREIGN KEY (recommendation_id) REFERENCES ai_recommendations(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "ai_decisions",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "recommendation_applications",
+      "parent": "ai_recommendations",
+      "definition": "FOREIGN KEY (recommendation_id) REFERENCES ai_recommendations(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "recommendation_applications",
+      "parent": "ai_decisions",
+      "definition": "FOREIGN KEY (decision_id) REFERENCES ai_decisions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "recommendation_applications",
+      "parent": "workout_template_versions",
+      "definition": "FOREIGN KEY (template_version_id) REFERENCES workout_template_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "recommendation_applications",
+      "parent": "training_program_versions",
+      "definition": "FOREIGN KEY (program_version_id) REFERENCES training_program_versions(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "recommendation_applications",
+      "parent": "workout_adjustments",
+      "definition": "FOREIGN KEY (adjustment_id) REFERENCES workout_adjustments(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "sync_operations",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    },
+    {
+      "table": "export_jobs",
+      "parent": "users",
+      "definition": "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    }
+  ],
+  "policy_count": 268,
+  "table_rls_count": 67
+}

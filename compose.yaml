@@ -1,0 +1,62 @@
+# Reploom local database. Never expose the admin role to the frontend.
+# Runtime credentials are provisioned separately; migrations use POSTGRES_USER.
+name: reploom
+
+services:
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Set POSTGRES_DB in .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  flyway:
+    image: ${FLYWAY_IMAGE:?Set FLYWAY_IMAGE in .env}
+    profiles:
+      - tools
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+      FLYWAY_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      FLYWAY_USER: ${POSTGRES_USER}
+      FLYWAY_PASSWORD: ${POSTGRES_PASSWORD}
+
+      FLYWAY_LOCATIONS: filesystem:/flyway/sql
+      FLYWAY_DEFAULT_SCHEMA: public
+
+      FLYWAY_CONNECT_RETRIES: "30"
+      FLYWAY_VALIDATE_MIGRATION_NAMING: "true"
+      FLYWAY_VALIDATE_ON_MIGRATE: "true"
+
+      FLYWAY_BASELINE_ON_MIGRATE: "false"
+      FLYWAY_CLEAN_DISABLED: "true"
+      FLYWAY_OUT_OF_ORDER: "false"
+
+    volumes:
+      - ./database/migrations:/flyway/sql:ro
+
+    command:
+      - info
+
+volumes:
+  postgres_data:

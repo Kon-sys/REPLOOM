@@ -1,0 +1,16 @@
+{
+  "result": "PASS",
+  "schema_version": 9,
+  "domain_tables": 67,
+  "public_tables": 68,
+  "checks": [
+    "fresh migration",
+    "integrity scenarios",
+    "row security",
+    "audited correction",
+    "seed data",
+    "dump/restore exact public row fingerprints",
+    "Flyway validate"
+  ],
+  "backup": "reploom_check_20261112120642_a8d083_20261112T120705Z_fd5b.dump"
+}
